@@ -1,0 +1,99 @@
+<div class="container">
+  <button mat-raised-button color="accent" routerLink="/charts">Back to charts list</button>
+  
+  <form [formGroup]="form" (submit)="submitForm()">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Red sensor</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="red"
+      >
+      <mat-hint>
+        <ng-container *ngIf="red.hasError('max')">
+          <ng-container *ngTemplateOutlet="invalidMaxVale"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="red.hasError('min')">
+          <ng-container *ngTemplateOutlet="invalidMinValue"></ng-container>
+        </ng-container>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Green sensor</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="green"
+      >
+      <mat-hint>
+        <ng-container *ngIf="green.hasError('max')">
+          <ng-container *ngTemplateOutlet="invalidMaxVale"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="green.hasError('min')">
+          <ng-container *ngTemplateOutlet="invalidMinValue"></ng-container>
+        </ng-container>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Blue sensor</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="blue"
+      >
+      <mat-hint>
+        <ng-container *ngIf="blue.hasError('max')">
+          <ng-container *ngTemplateOutlet="invalidMaxVale"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="blue.hasError('min')">
+          <ng-container *ngTemplateOutlet="invalidMinValue"></ng-container>
+        </ng-container>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Yellow sensor</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="yellow"
+      >
+      <mat-hint>
+        <ng-container *ngIf="yellow.hasError('max')">
+          <ng-container *ngTemplateOutlet="invalidMaxVale"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="yellow.hasError('min')">
+          <ng-container *ngTemplateOutlet="invalidMinValue"></ng-container>
+        </ng-container>
+      </mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!form.valid">
+      Add chart
+    </button>
+  </form>
+</div>
+
+
+<ng-template #invalidMaxVale>
+  <span style="color: red">Value should not exceed 100</span>
+</ng-template>
+
+<ng-template #invalidMinValue>
+  <span style="color: red">Value should not be less than 0</span>
+</ng-template>

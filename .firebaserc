@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bergmann-test-7ce4e": {
+      "hosting": {
+        "bergmann-test": [
+          "bergmann-test-7ce4e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bergmann-test-7ce4e"
+  }
+}

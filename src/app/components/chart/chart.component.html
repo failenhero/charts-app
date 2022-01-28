@@ -1,0 +1,12 @@
+<div class="container">
+  <span>{{ chart.chartId }}</span>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="deleteChart()"
+    [disabled]="!chart.chartId"
+  >
+    Delete
+  </button>
+</div>
+

@@ -1,0 +1,6 @@
+<div
+  class="container"
+  *ngFor="let chart of chartsList$ | async"
+>
+  <app-chart [chart]="chart"></app-chart>
+</div>
