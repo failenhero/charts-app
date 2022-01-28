@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input} from '@angular/core';
 import {ChartsService} from "../../shared/services";
 import {Chart} from "../../shared/models";
 
@@ -7,15 +7,16 @@ import {Chart} from "../../shared/models";
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements AfterViewInit {
   @Input() chart!: Chart;
 
   constructor(
-    private chartsService: ChartsService
+    private chartsService: ChartsService,
+    private elRef: ElementRef
   ) { }
 
-  ngOnInit(): void {
-    const canvas = <HTMLCanvasElement>document.getElementById('chart');
+  ngAfterViewInit() {
+    const canvas = this.elRef.nativeElement.querySelector('canvas');
     const context = canvas.getContext('2d');
 
     if (context) {
@@ -76,7 +77,7 @@ export class ChartComponent implements OnInit {
 
 
   drawBarChart(context: any){
-    let chartData = Object.entries(this.chart.sensorReadings);
+    let chartData = Object.entries(this.chart.sensorReadings).sort();
     const newData = chartData.map(data => ({name: data[0], value: data[1]}))
 
     for(let i = 0; i < newData.length; i++) {
@@ -86,6 +87,5 @@ export class ChartComponent implements OnInit {
       this.addColumnName(context, sensorInfo.name, 25 + i * 100,this.chart.metaInfo.height - 40);
       this.addColumnHead(context, sensorInfo.value,45 + i * 100,this.chart.metaInfo.height - sensorInfo.value * 2 - 65);
     }
-
   }
 }
