@@ -27,29 +27,34 @@ export class ChartsCreationComponent implements OnInit {
     return this.form.get('title') as FormControl;
   }
 
-  get red(): FormControl {
-    return this.form.get('red') as FormControl;
+  get aSensor(): FormControl {
+    return this.form.get('A_Sensor') as FormControl;
   }
 
-  get green(): FormControl {
-    return this.form.get('green') as FormControl;
+  get bSensor(): FormControl {
+    return this.form.get('B_Sensor') as FormControl;
   }
 
-  get blue(): FormControl {
-    return this.form.get('blue') as FormControl;
+  get cSensor(): FormControl {
+    return this.form.get('C_Sensor') as FormControl;
   }
 
-  get yellow(): FormControl {
-    return this.form.get('yellow') as FormControl;
+  get dSensor(): FormControl {
+    return this.form.get('D_Sensor') as FormControl;
+  }
+
+  get eSensor(): FormControl {
+    return this.form.get('E_Sensor') as FormControl;
   }
 
   private createForm(): void {
     this.form = this.formBuilder.group({
       title: [null, [Validators.required, Validators.maxLength(50)]],
-      red: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
-      green: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
-      blue: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
-      yellow: [null, [Validators.required, Validators.min(0), Validators.max(100)]]
+      A_Sensor: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      B_Sensor: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      C_Sensor: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      D_Sensor: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      E_Sensor: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
     })
   }
 
@@ -72,10 +77,11 @@ export class ChartsCreationComponent implements OnInit {
         leftaxisFont: secondaryFont,
       },
       sensorReadings: {
-        red: formValue.red,
-        green: formValue.green,
-        blue: formValue.blue,
-        yellow: formValue.yellow
+        A_Sensor: formValue.A_Sensor,
+        B_Sensor: formValue.B_Sensor,
+        C_Sensor: formValue.C_Sensor,
+        D_Sensor: formValue.D_Sensor,
+        E_Sensor: formValue.E_Sensor
       }
     }
 

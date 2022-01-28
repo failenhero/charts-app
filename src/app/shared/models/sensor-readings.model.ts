@@ -1,6 +1,7 @@
 export interface SensorReadings {
-  red: number,
-  green: number,
-  blue: number,
-  yellow: number
+  A_Sensor: number,
+  B_Sensor: number,
+  C_Sensor: number,
+  D_Sensor: number,
+  E_Sensor: number
 }
